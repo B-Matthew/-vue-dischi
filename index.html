@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"
     <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
@@ -13,22 +13,21 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <label for="type">Filtra per tipo</label>
-        <select v-model="selected" name="type" id="type">
-          <option selected value>All</option>
-          <option v-for="genre in genres" :value="genre">{{genre}}</option>
-        </select>
-        <ul>
-          <li v-for="item in sortedArray()">
-            <img :src="item.poster" alt="">
-            <h2>{{item.title}}</h2>
-            <h3>{{item.author}}</h3>
-            <p>{{item.year}} </p>
-            <p>{{item.genre}}</p>
-          </li>
-        </ul>
+      <label for="type">Filtra per tipo</label>
+      <select v-model="selected" name="type" id="type">
+        <option selected value>All</option>
+        <option v-for="genre in genres" :value="genre">{{genre}}</option>
+      </select>
+      <div v-for="item in sortedArray()" class="card">
+        <div class="content">
+          <img :src="item.poster" alt="">
+          <h2>{{item.title}}</h2>
+          <h3>{{item.author}}</h3>
+          <p>{{item.year}} </p>
+          <p>{{item.genre}}</p>
+        </div>
       </div>
     </div>
-  </body>
-  </html>
+  </div>
+</body>
+</html>
