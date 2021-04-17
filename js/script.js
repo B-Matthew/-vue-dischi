@@ -27,22 +27,37 @@ function raccoltaMusicale () {
       filteredGenre: function() {
         var test = this.items.filter( type =>  type.genre.includes(this.selected));
         return test;
-      }
-    },
+      },
+      sortedArray: function() {
+        const sortedYear = this.filteredGenre().sort (
+          function(a,b){
+            if (a.year < b.year) {
+             return -1;
+            } else if (a.year > b.year) {
+             return 1;
+            }
+            return 0;
+          }
+        );
+          return sortedYear
+        }
+      },
+      mounted() {
+        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+        .then(data => {
+          this.items = data.data.response;
+          this.getGenre();
+        })
+        .catch(() => console.log('error'));
+      },
 
-    mounted() {
-      axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-      .then(data => {
-        this.items = data.data.response;
-        this.getGenre();
-      })
-      .catch(() => console.log('error'));
-    }
-  });
-}
 
-function init() {
-  raccoltaMusicale();
-}
+    });
 
-$(document).ready(init);
+  }
+
+  function init() {
+    raccoltaMusicale();
+  }
+
+  $(document).ready(init);

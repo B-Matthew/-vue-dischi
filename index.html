@@ -20,7 +20,7 @@
           <option v-for="genre in genres" :value="genre">{{genre}}</option>
         </select>
         <ul>
-          <li v-for="item in filteredGenre()">
+          <li v-for="item in sortedArray()">
             <img :src="item.poster" alt="">
             <h2>{{item.title}}</h2>
             <h3>{{item.author}}</h3>
